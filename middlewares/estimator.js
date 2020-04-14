@@ -1,6 +1,6 @@
 const Big = require('big-js');
 
-// Returns the infectionsByRequestedTime value
+// Returns value for infectionsByRequestedTime
 const infections = (currentlyInfected, timeToElapse, periodType) => {
   let infectionsByRequestedTime = null;
   let days;
@@ -23,7 +23,7 @@ const infections = (currentlyInfected, timeToElapse, periodType) => {
 
   return infectionsByRequestedTime;
 };
-
+//Beds computation
 const bedsByRequestedTime = (totalHospitalBeds, severeCasesByRequestedTime) => {
   const available = totalHospitalBeds * 0.35;
   return available - severeCasesByRequestedTime;
@@ -51,6 +51,7 @@ const dollarsInFlght = (infectionsBRTime, avgDIPopulation, avgDailyIIUSD, timeTo
   return Math.trunc(inflight);
 };
 
+//Severity of cases.
 const severeCases = (infectionsBRTime) => Math.trunc(infectionsBRTime * 0.15);
 
 const casesForICU = (infectionsBRTime) => infectionsBRTime * 0.05;

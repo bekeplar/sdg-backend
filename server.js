@@ -1,4 +1,6 @@
 const express = require('express');
+
+//Create an express application.
 const app = express()
 const bodyParser = require('body-parser');
 const xml = require('xml');
@@ -88,7 +90,7 @@ app.post("/api/v1/on-covid-19/:type",estimator,(req,res)=>{
         
         //set the content type to xml
         res.type('application/xml');
-        //send an xml data
+        //send xml data
         res.status(201).send(xml(dataToSubmit,{declaration:true}));
     }
 })
@@ -102,7 +104,7 @@ app.get('/api/v1/on-covid-19/logs',(req,res)=>{
 
 //Block access to any undefined endpoint
 app.get('*',(req,res)=>{
-    res.status(405).send("This endpoint is off-limits")
+    res.status(405).send("url not found")
 })
 
 const PORT = process.env.PORT || 5000
